@@ -6,4 +6,6 @@ In cases where I used cloud specific technology, like Azure Cosmos DB and AWS Dy
 
 I will try to keep updating this roadmap as the technology landscape is evolving.
 
+https://github.com/MoienTajik/AspNetCore-Developer-Roadmap
+
 ![](Backend-.NET-Developer-Roadmap-2022.png)
