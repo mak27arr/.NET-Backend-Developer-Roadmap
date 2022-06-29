@@ -7,17 +7,17 @@ namespace DappeRTest.DAL
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly IConfiguration configuration;
+        private readonly IConfiguration _configuration;
 
         public ProductRepository(IConfiguration configuration)
         {
-            this.configuration = configuration;
+            this._configuration = configuration;
         }
 
         public async Task<Product> GetAsync(int id)
         {
             var sql = "SELECT * FROM Products WHERE Id = @Id";
-            using (var connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 connection.Open();
                 return await connection.QuerySingleOrDefaultAsync<Product>(sql, new { Id = id });
@@ -27,7 +27,7 @@ namespace DappeRTest.DAL
         public async Task<IEnumerable<Product>> GetAsync()
         {
             var sql = "SELECT * FROM Products";
-            using (var connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 connection.Open();
                 return await connection.QueryAsync<Product>(sql);
@@ -38,7 +38,7 @@ namespace DappeRTest.DAL
         {
             entity.AddedOn = DateTime.Now;
             var sql = "Insert into Products (Name,Description,Barcode,Rate,AddedOn) VALUES (@Name,@Description,@Barcode,@Rate,@AddedOn)";
-            using (var connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 connection.Open();
                 return await connection.ExecuteAsync(sql, entity);
@@ -49,7 +49,7 @@ namespace DappeRTest.DAL
         {
             entity.ModifiedOn = DateTime.Now;
             var sql = "UPDATE Products SET Name = @Name, Description = @Description, Barcode = @Barcode, Rate = @Rate, ModifiedOn = @ModifiedOn  WHERE Id = @Id";
-            using (var connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 connection.Open();
                 return await connection.ExecuteAsync(sql, entity);
@@ -59,7 +59,7 @@ namespace DappeRTest.DAL
         public async Task DeleteAsync(int id)
         {
             var sql = "DELETE FROM Products WHERE Id = @Id";
-            using (var connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 connection.Open();
                 await connection.ExecuteAsync(sql, new { Id = id });

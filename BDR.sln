@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pattern", "Pattern", "{A28F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RDBMS_ORM", "RDBMS_ORM", "{B346538F-03ED-485C-A743-DDC57CCFAFD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{A95CD97A-3407-4159-A041-35EB43D3F9FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{A95CD97A-3407-4159-A041-35EB43D3F9FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF", "EF\EF.csproj", "{A71C68BB-0D5F-494F-9BE9-40C1F9AB92D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{A95CD97A-3407-4159-A041-35EB43D3F9FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A95CD97A-3407-4159-A041-35EB43D3F9FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A95CD97A-3407-4159-A041-35EB43D3F9FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A71C68BB-0D5F-494F-9BE9-40C1F9AB92D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A71C68BB-0D5F-494F-9BE9-40C1F9AB92D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A71C68BB-0D5F-494F-9BE9-40C1F9AB92D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A71C68BB-0D5F-494F-9BE9-40C1F9AB92D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2D57D16D-D5D1-4F7E-A3EA-FA3E9305B91B} = {B346538F-03ED-485C-A743-DDC57CCFAFD2}
 		{A95CD97A-3407-4159-A041-35EB43D3F9FE} = {A28F1F2D-FDC9-4CD5-BC71-94AC2887E473}
+		{A71C68BB-0D5F-494F-9BE9-40C1F9AB92D8} = {B346538F-03ED-485C-A743-DDC57CCFAFD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5A50617A-A55A-454E-9437-30A26BFCF92B}
