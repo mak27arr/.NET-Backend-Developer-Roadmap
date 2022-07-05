@@ -1,7 +1,9 @@
 ﻿namespace Database.Interface
 {
-    internal interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         IProductRepository Products { get; }
+
+        Task SaveAsync();
     }
 }

@@ -3,7 +3,7 @@ using Database.Interface;
 using EF.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace DappeRTest.DAL
+namespace EF.DAL
 {
     internal class ProductRepository : IProductRepository, IDisposable
     {
