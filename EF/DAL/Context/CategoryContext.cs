@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EF.DAL.Context
 {
-    internal class ProductContext : DbContext
+    internal class CategoryContext : DbContext
     {
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categorys { get; set; }
 
-        public ProductContext(DbContextOptions options)
+        public CategoryContext(DbContextOptions options)
         {
-               Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -18,9 +18,6 @@ namespace EF.DAL.Context
             modelBuilder.Entity<Product>().Property(x => x.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd();
-            modelBuilder.Entity<Product>().HasOne(c => c.Category).WithMany(x => x.Products)
-                .HasForeignKey(f => f.CategoryInfoKey)
-                .HasForeignKey( k => k.CategoryName).HasPrincipalKey(p => p.Name);
         }
     }
 }
