@@ -20,7 +20,7 @@ namespace EF.DAL.Context
                 .ValueGeneratedOnAdd();
             modelBuilder.Entity<Product>().HasOne(c => c.Category).WithMany(x => x.Products)
                 .HasForeignKey(f => f.CategoryInfoKey)
-                .HasForeignKey( k => k.CategoryName).HasPrincipalKey(p => p.Name);
+                .HasForeignKey( k => k.CategoryName).HasPrincipalKey(p => p.Name).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
