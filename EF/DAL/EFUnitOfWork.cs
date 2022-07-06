@@ -1,5 +1,6 @@
 ﻿using Database.Interface;
 using EF.DAL.Context;
+using EF.Log;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -20,10 +21,11 @@ namespace EF.DAL
                 {
                     var optionsBuilder = new DbContextOptionsBuilder<ProductContext>();
                     var options = optionsBuilder
+                        .UseLazyLoadingProxies()
                         .UseSqlServer(_connectionString)
+                        .UseLoggerFactory(new EFLoggerFactory())
                         .Options;
                     _productContext = new ProductContext(options);
-
                 }
 
                 return _productContext;

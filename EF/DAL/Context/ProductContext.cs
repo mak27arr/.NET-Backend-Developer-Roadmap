@@ -9,7 +9,7 @@ namespace EF.DAL.Context
 
         public ProductContext(DbContextOptions options) : base(options)
         {
-               Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -20,7 +20,8 @@ namespace EF.DAL.Context
                 .ValueGeneratedOnAdd();
             modelBuilder.Entity<Product>().HasOne(c => c.Category).WithMany(x => x.Products)
                 .HasForeignKey(f => f.CategoryInfoKey)
-                .HasForeignKey( k => k.CategoryName).HasPrincipalKey(p => p.Name).OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(k => k.CategoryName).HasPrincipalKey(p => p.Name).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Product>().OwnsOne(typeof(SecretParamtr), "SecretParameter");// as for me bad
         }
     }
 }

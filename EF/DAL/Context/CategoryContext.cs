@@ -18,6 +18,7 @@ namespace EF.DAL.Context
             modelBuilder.Entity<Product>().Property(x => x.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Product>().HasIndex(x => x.Barcode).IsUnique();
         }
     }
 }

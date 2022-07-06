@@ -24,7 +24,7 @@ namespace EF.DAL
 
         public async Task<IEnumerable<Product>> GetAsync()
         {
-            return await _context.Products.AsNoTracking().ToListAsync();
+            return await _context.Products.ToListAsync();
         }
 
         public async Task<int> AddAsync(Product entity)

@@ -9,9 +9,11 @@
         public decimal Rate { get; set; }
         public DateTime AddedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
-        public Category? Category { get; set; }
+        public virtual Category? Category { get; set; }
         public int CategoryInfoKey { get; set; }
         public string? CategoryName { get; set; }
+        public ProductParamtr Parameter { get; set; }
+        private SecretParamtr SecretParameter { get; set; }
 
     }
 }
