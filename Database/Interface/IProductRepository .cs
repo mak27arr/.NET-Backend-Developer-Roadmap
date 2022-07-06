@@ -2,7 +2,7 @@
 
 namespace Database.Interface
 {
-    public interface IProductRepository : IRepository<Product, int>
+    public interface IProductRepository : IRepository<Product, int>, IDisposable
     {
     }
 }

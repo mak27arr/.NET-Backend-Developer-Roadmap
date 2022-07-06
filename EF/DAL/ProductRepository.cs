@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EF.DAL
 {
-    internal class ProductRepository : IProductRepository, IDisposable
+    internal class ProductRepository : IProductRepository
     {
         private readonly ProductContext _context;
 

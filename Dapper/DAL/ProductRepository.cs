@@ -8,19 +8,25 @@ namespace DappeRTest.DAL
     public class ProductRepository : IProductRepository
     {
         private readonly IConfiguration _configuration;
+        private readonly SqlConnection _connection;
 
         public ProductRepository(IConfiguration configuration)
         {
             this._configuration = configuration;
+            _connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
         }
 
         public async Task<Product> GetAsync(int id)
         {
             var sql = "SELECT * FROM Products WHERE Id = @Id";
-            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            try
             {
-                connection.Open();
-                return await connection.QuerySingleOrDefaultAsync<Product>(sql, new { Id = id });
+                _connection.Open();
+                return await _connection.QuerySingleOrDefaultAsync<Product>(sql, new { Id = id });
+            }
+            finally
+            {
+                await _connection.CloseAsync();
             }
         }
 
@@ -64,6 +70,11 @@ namespace DappeRTest.DAL
                 connection.Open();
                 await connection.ExecuteAsync(sql, new { Id = id });
             }
+        }
+
+        public void Dispose()
+        {
+            _connection?.Dispose();
         }
     }
 }
