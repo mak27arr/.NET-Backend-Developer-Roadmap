@@ -7,7 +7,7 @@ namespace EF.DAL.Context
     {
         public DbSet<Product> Products { get; set; }
 
-        public ProductContext(DbContextOptions options)
+        public ProductContext(DbContextOptions options) : base(options)
         {
                Database.EnsureCreated();
         }
