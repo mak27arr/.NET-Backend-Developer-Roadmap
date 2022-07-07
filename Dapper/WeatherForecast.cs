@@ -1,4 +1,4 @@
-namespace Dapper
+namespace DappeRTest
 {
     public class WeatherForecast
     {

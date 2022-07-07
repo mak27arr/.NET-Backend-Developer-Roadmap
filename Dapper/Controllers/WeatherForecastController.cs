@@ -1,6 +1,7 @@
+using DappeRTest;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dapper.Controllers
+namespace DappeRTest.Controllers
 {
     [ApiController]
     [Route("[controller]")]
