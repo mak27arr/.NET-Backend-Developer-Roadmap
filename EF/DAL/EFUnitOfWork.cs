@@ -65,7 +65,7 @@ namespace EF.DAL
 
         public async Task SaveAsync()
         {
-            await _productContext.SaveChangesAsync();
+            await _productRepository.SaveAsync();
         }
     }
 }

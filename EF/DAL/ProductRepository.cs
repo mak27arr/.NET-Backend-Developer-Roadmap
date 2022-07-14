@@ -29,7 +29,9 @@ namespace EF.DAL
 
         public async Task<int> AddAsync(Product entity)
         {
-            return (await _context.Products.AddAsync(entity)).Entity.Id;
+            await _context.Products.AddAsync(entity);
+            await SaveAsync();
+            return entity.Id;
         }
 
         public async Task<int> UpdateAsync(Product entity)
@@ -42,9 +44,14 @@ namespace EF.DAL
             _context.Products.Remove(await GetAsync(id));
         }
 
+        public async Task SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
         public void Dispose()
         {
-            _context.SaveChanges();
+            _context?.Dispose();
         }
     }
 }

@@ -7,5 +7,6 @@
         Task<Y> AddAsync(T entity);
         Task<Y> UpdateAsync(T entity);
         Task DeleteAsync(Y id);
+        Task SaveAsync();
     }
 }

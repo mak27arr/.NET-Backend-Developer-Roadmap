@@ -21,6 +21,8 @@ namespace EF.DAL.Context
             modelBuilder.Entity<Product>().HasOne(c => c.Category).WithMany(x => x.Products)
                 .HasForeignKey(f => f.CategoryInfoKey)
                 .HasForeignKey(k => k.CategoryName).HasPrincipalKey(p => p.Name).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Product>().Property(x => x.AddedOn).HasDefaultValue(DateTime.Now);
+            modelBuilder.Entity<Product>().Property(x => x.ModifiedOn).HasDefaultValue(DateTime.Now);
             modelBuilder.Entity<Product>().OwnsOne(typeof(SecretParamtr), "SecretParameter");// as for me bad
         }
     }
