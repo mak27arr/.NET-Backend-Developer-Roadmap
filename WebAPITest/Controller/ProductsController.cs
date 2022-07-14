@@ -30,19 +30,18 @@ namespace WebAPI.Controller
         }
 
         [HttpPost]
-        public async Task<ActionResult<Product>> Post(Product product)
+        public async Task<ActionResult<Product>> Post([FromBody] Product product)
         {
             if (product == null)
                 return BadRequest();
 
             await _db.Products.AddAsync(product);
-            await _db.SaveAsync();
 
             return Ok(product);
         }
 
         [HttpPut]
-        public async Task<ActionResult<Product>> Put(Product product)
+        public async Task<ActionResult<Product>> Put([FromBody] Product product)
         {
             if (product == null)
                 return BadRequest();

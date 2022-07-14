@@ -1,4 +1,5 @@
 ﻿using Database.Entities;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using System;
@@ -33,15 +34,17 @@ namespace xU.WebAPITest.ProductTests
         [Fact]
         public async Task AddProduct()
         {
-            var product = new Product()
+            var expected = new Product()
             {
                 Name = "Test name",
-                Barcode = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.FFFZ")                   
+                Barcode = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.FFFZ"),
+                ParameterOption = new ProductParamtr()
             };
-            var response = await _client.PostAsync($"/api/{_controlerName}", new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json"));
+            var content = new StringContent(JsonConvert.SerializeObject(expected), Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync($"/api/{_controlerName}", content);
             response.EnsureSuccessStatusCode();
-            var id = await response.Content.ReadAsStringAsync();
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var actual = JsonConvert.DeserializeObject<Product>(await response.Content.ReadAsStringAsync());
+            Assert.Equal(expected.Name, actual?.Name);
         }
 
         public void Dispose()

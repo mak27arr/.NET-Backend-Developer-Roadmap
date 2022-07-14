@@ -12,7 +12,7 @@
         public virtual Category? Category { get; set; }
         public int CategoryInfoKey { get; set; }
         public string? CategoryName { get; set; }
-        public ProductParamtr Parameter { get; set; }
+        public ProductParamtr ParameterOption { get; set; }
         private SecretParamtr SecretParameter { get; set; }
 
     }
