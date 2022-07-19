@@ -4,6 +4,8 @@ using System.Diagnostics;
 
 namespace ASPNetCoreMVC.Controllers
 {
+    [Route("")]
+    [Route("{controller}")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
