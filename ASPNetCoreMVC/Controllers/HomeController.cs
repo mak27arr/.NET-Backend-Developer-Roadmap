@@ -1,11 +1,16 @@
-﻿using ASPNetCoreMVC.Models;
+﻿using ASPNetCoreMVC.Filters.ActionFilter.Whitespace;
+using ASPNetCoreMVC.Filters.ExceptionFilter;
+using ASPNetCoreMVC.Filters.ResourceFilter;
+using ASPNetCoreMVC.Filters.ResultFilter;
+using ASPNetCoreMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace ASPNetCoreMVC.Controllers
 {
-    [Route("")]
-    [Route("{controller}")]
+    [CustomExceptionFilter]
+    [SimpleResourceFilter]
+    [Route("{controller}/{action}")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -15,6 +20,8 @@ namespace ASPNetCoreMVC.Controllers
             _logger = logger;
         }
 
+        [DateTimeExecutionFilter]
+        [Whitespace]
         public IActionResult Index()
         {
             return View();
@@ -22,6 +29,8 @@ namespace ASPNetCoreMVC.Controllers
 
         public IActionResult Privacy()
         {
+            var x = 0;
+            var t = 8 / x;
             return View();
         }
 

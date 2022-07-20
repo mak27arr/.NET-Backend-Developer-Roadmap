@@ -1,7 +1,14 @@
+using ASPNetCoreMVC.Filters.ResourceFilter;
+using ASPNetCoreMVC.Middleware;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(typeof(SimpleResourceFilter)); 
+});
+builder.Services.AddMvc();
+builder.Services.AddScoped<LoggerResourceFilter>();
 
 var app = builder.Build();
 
@@ -19,11 +26,10 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
-app.MapControllers();
 //app.MapControllerRoute(
 //    name: "default",
 //    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseMiddleware<TokenMiddleware>();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
@@ -34,5 +40,4 @@ app.UseEndpoints(endpoints =>
 app.MapFallbackToController(
     action: "Index",
     controller: "Home");
-
 app.Run();
