@@ -2,7 +2,7 @@
 
 namespace ASPNetCoreMVC.Controllers
 {
-    [Route("{controller}")]
+    [Route("{controller}/{action}")]
     public class AboutController : Controller
     {
         public IActionResult Index()
