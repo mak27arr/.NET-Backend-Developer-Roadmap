@@ -76,5 +76,10 @@ namespace DappeRTest.DAL
         {
             _connection?.Dispose();
         }
+
+        public Task SaveAsync()
+        {
+            return Task.CompletedTask;
+        }
     }
 }

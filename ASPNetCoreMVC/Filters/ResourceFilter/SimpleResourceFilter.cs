@@ -8,12 +8,12 @@ namespace ASPNetCoreMVC.Filters.ResourceFilter
 
         public void OnResourceExecuted(ResourceExecutedContext context)
         {
-            if(!context.HttpContext.Response.Headers.IsReadOnly)
-                context.HttpContext.Response.Cookies.Append("LastVisit", DateTime.Now.ToString("dd/MM/yyyy HH-mm-ss"));
         }
 
         public void OnResourceExecuting(ResourceExecutingContext context)
         {
+            if (!context.HttpContext.Response.Headers.IsReadOnly)
+                context.HttpContext.Response.Cookies.Append("LastVisit", DateTime.Now.ToString("dd/MM/yyyy HH-mm-ss"));
         }
     }
 }

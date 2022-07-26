@@ -29,8 +29,6 @@ namespace ASPNetCoreMVC.Controllers
 
         public IActionResult Privacy()
         {
-            var x = 0;
-            var t = 8 / x;
             return View();
         }
 
