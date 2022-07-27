@@ -7,14 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Controllers\Users\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Admin\Views\Admin\RoleManagement\" />
+    <Folder Include="Areas\Identity\Data\" />
     <Folder Include="Areas\ResOwner\Controllers\" />
     <Folder Include="Areas\ResOwner\Data\" />
     <Folder Include="Areas\ResOwner\Models\" />
     <Folder Include="Areas\ResOwner\Views\" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
   <ItemGroup>

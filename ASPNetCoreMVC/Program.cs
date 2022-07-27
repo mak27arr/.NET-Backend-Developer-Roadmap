@@ -1,3 +1,4 @@
+using ASPNetCoreMVC.Areas.Admin.Models.User;
 using ASPNetCoreMVC.Data;
 using ASPNetCoreMVC.Filters.ResourceFilter;
 using ASPNetCoreMVC.Middleware;
@@ -7,12 +8,11 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => 
-{ 
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequiredLength = 6;
     options.Password.RequireLowercase = false;
@@ -20,11 +20,14 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireDigit = false;
 })
-.AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultUI()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews(options =>
 {
-    options.Filters.Add(typeof(SimpleResourceFilter)); 
+    options.Filters.Add(typeof(SimpleResourceFilter));
 });
 builder.Services.AddMvc();
 builder.Services.AddScoped<LoggerResourceFilter>();
