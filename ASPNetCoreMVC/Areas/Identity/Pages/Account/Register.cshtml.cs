@@ -12,6 +12,7 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
 using ASPNetCoreMVC.Areas.Admin.Models.User;
+using ASPNetCoreMVC.Enums.Indentity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -129,7 +130,7 @@ namespace ASPNetCoreMVC.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-
+                    await _userManager.AddToRoleAsync(user, Roles.Basic.ToString());
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -165,7 +166,7 @@ namespace ASPNetCoreMVC.Areas.Identity.Pages.Account
         private void FillUserPropertyFromModel(ApplicationUser user)
         {
             MailAddress address = new MailAddress(Input.Email);
-            var userName = address.User;
+            var  userName = address.User;
             user.UserName = userName;
             user.Email = Input.Email;
             user.FirstName = Input.FirstName;

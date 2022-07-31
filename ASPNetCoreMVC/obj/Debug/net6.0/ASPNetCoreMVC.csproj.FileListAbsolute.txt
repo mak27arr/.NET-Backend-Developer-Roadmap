@@ -303,3 +303,15 @@ C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMV
 C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Microsoft.Owin.Security.OAuth.dll
 C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Owin.dll
 C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\NLog.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\NLog.Extensions.Logging.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\NLog.Web.AspNetCore.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Serilog.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Serilog.AspNetCore.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Serilog.Extensions.Hosting.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Serilog.Extensions.Logging.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Serilog.Formatting.Compact.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Serilog.Settings.Configuration.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Serilog.Sinks.Console.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\ASPNetCoreMVC\bin\Debug\net6.0\Serilog.Sinks.File.dll

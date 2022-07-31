@@ -12,7 +12,11 @@
     <Folder Include="Areas\ResOwner\Data\" />
     <Folder Include="Areas\ResOwner\Models\" />
     <Folder Include="Areas\ResOwner\Views\" />
-    <Folder Include="Data\" />
+    <Folder Include="Areas\SArea\Controllers\" />
+    <Folder Include="Areas\SArea\Data\" />
+    <Folder Include="Areas\SArea\Models\" />
+    <Folder Include="Areas\SArea\Views\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +38,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
+    <PackageReference Include="NLog" Version="5.0.1" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.1.0" />
+    <PackageReference Include="Serilog" Version="2.11.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>
 
