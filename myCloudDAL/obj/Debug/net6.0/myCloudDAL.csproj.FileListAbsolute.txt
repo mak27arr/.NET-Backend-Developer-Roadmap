@@ -1,0 +1,14 @@
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\bin\Debug\net6.0\myCloudDAL.deps.json
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\bin\Debug\net6.0\myCloudDAL.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\bin\Debug\net6.0\myCloudDAL.pdb
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\obj\Debug\net6.0\myCloudDAL.csproj.AssemblyReference.cache
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\obj\Debug\net6.0\myCloudDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\obj\Debug\net6.0\myCloudDAL.AssemblyInfoInputs.cache
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\obj\Debug\net6.0\myCloudDAL.AssemblyInfo.cs
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\obj\Debug\net6.0\myCloudDAL.csproj.CoreCompileInputs.cache
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\obj\Debug\net6.0\myCloudDAL.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\obj\Debug\net6.0\refint\myCloudDAL.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\obj\Debug\net6.0\myCloudDAL.pdb
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\obj\Debug\net6.0\ref\myCloudDAL.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\bin\Debug\net6.0\myCloudDAL.runtimeconfig.json
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\myCloudDAL\obj\Debug\net6.0\myCloudDAL.genruntimeconfig.cache
