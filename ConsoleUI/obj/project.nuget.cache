@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "1knFxtDwF+MnmUWU5GB8lZCu0FbY6bZzC/VS4c5CC7SMsy9tl9rwBp2BimNh4Zasvqai8x5GnKIGWi+bxdytvA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mak27\\source\\repos\\mak27arr\\.NET-Backend-Developer-Roadmap\\ConsoleUI\\ConsoleUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mak27\\.nuget\\packages\\autofac\\6.4.0\\autofac.6.4.0.nupkg.sha512",
+    "C:\\Users\\mak27\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

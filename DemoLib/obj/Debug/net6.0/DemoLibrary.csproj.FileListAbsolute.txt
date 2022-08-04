@@ -1,0 +1,12 @@
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\bin\Debug\net6.0\DemoLibrary.deps.json
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\bin\Debug\net6.0\DemoLibrary.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\bin\Debug\net6.0\DemoLibrary.pdb
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\obj\Debug\net6.0\DemoLibrary.csproj.AssemblyReference.cache
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\obj\Debug\net6.0\DemoLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\obj\Debug\net6.0\DemoLibrary.AssemblyInfoInputs.cache
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\obj\Debug\net6.0\DemoLibrary.AssemblyInfo.cs
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\obj\Debug\net6.0\DemoLibrary.csproj.CoreCompileInputs.cache
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\obj\Debug\net6.0\DemoLibrary.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\obj\Debug\net6.0\refint\DemoLibrary.dll
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\obj\Debug\net6.0\DemoLibrary.pdb
+C:\Users\mak27\source\repos\mak27arr\.NET-Backend-Developer-Roadmap\DemoLib\obj\Debug\net6.0\ref\DemoLibrary.dll
