@@ -5,12 +5,12 @@
 @implements IAsyncDisposable
 
 <div class="form-group">
-    <label>User: <input @bind="userInput"></input></label>
+    <label>User: <input @bind = "userInput" @onkeyup = "UpdateState" @oninput = "UpdateState"></input></label>
 </div>
 <div class="form-group">
-    <label>Message: <input @bind="messageInput"></input></label>
+    <label>Message: <input @bind = "messageInput" @onkeyup = "UpdateState" @oninput = "UpdateState"></input></label>
 </div>
-<button @onclick="Send" disabled="@(IsConnected == false)">Send</button>
+<button @onclick = "Send" disabled = "@(CanSend == false)">Send</button>
 <hr/>
 <ul>
     @foreach (var message in messages)
@@ -47,7 +47,13 @@
             await hubConnection.SendAsync("SendMessage", userInput, messageInput);
     }
 
+    private void UpdateState(KeyboardEventArgs args) => InvokeAsync(StateHasChanged);
+
+    private void UpdateState(ChangeEventArgs args) => InvokeAsync(StateHasChanged);
+
     public bool IsConnected => hubConnection?.State == HubConnectionState.Connected;
+
+    public bool CanSend => IsConnected && !string.IsNullOrEmpty(userInput) && !string.IsNullOrWhiteSpace(messageInput);
 
     public async ValueTask DisposeAsync()
     {
