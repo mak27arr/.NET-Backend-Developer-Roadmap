@@ -2,7 +2,7 @@
 
 namespace myCloudDAL.DAL.Interface.Repo
 {
-    internal interface IRepository<T, ID> where T : class where ID : struct
+    public interface IRepository<T, ID> where T : class where ID : struct
     {
         Task<IEnumerable<T>> GetAsync();
         Task<T> GetAsync(ID id);

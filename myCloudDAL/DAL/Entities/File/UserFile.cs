@@ -1,6 +1,6 @@
 ﻿namespace myCloudDAL.DAL.Entities.File
 {
-    internal class UserFile<T> : BaseDiskFile<T> where T : struct
+    public class UserFile<T> : BaseDiskFile<T> where T : struct
     {
         public Guid Owner { get; set; }
         public string Title { get; set; }

@@ -2,7 +2,7 @@
 
 namespace myCloudDAL.DAL.Interface.Repo
 {
-    internal interface IFileRepository : IRepository<UserFile<Guid>, Guid>
+    public interface IFileRepository : IRepository<UserFile<Guid>, Guid>, IDisposable
     {
     }
 }

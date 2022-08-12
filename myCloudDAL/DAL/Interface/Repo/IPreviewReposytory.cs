@@ -3,7 +3,7 @@ using myCloudDAL.DAL.Interface.Repo;
 
 namespace myCloudDAL.DAL.Interface.Repo
 {
-    internal interface IPreviewRepository : IRepository<PreviewFile<Guid>, Guid>
+    public interface IPreviewRepository : IRepository<PreviewFile<Guid>, Guid>, IDisposable
     {
     }
 }
