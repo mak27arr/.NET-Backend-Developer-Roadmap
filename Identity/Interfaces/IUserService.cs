@@ -4,10 +4,10 @@ using System.Security.Claims;
 
 namespace Identity.Interfaces
 {
-    internal interface IUserService
+    public interface IUserService
     {
         Task<OperationDetails> Create(UserDTO userDto);
-        Task<ClaimsIdentity> Authenticate(UserDTO userDto);
-        Task SetInitialData(UserDTO adminDto, List<string> roles);
+        Task<AuthResult> Authenticate(UserDTO userDto);
+        Task SetInitialData(UserDTO adminDto);
     }
 }

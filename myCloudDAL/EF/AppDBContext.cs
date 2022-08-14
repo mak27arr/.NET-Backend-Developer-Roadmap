@@ -1,13 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using myCloudDAL.DAL.Entities.File;
+using myCloudDAL.DAL.Entities.Identity;
 using myCloudDAL.EF.Config;
 
 namespace myCloudDAL.DAL
 {
-    internal class AppDBContext : DbContext
+    internal class AppDBContext : IdentityDbContext<AppUser>
     {
         internal DbSet<UserFile<Guid>> UserFiles;
         internal DbSet<PreviewFile<Guid>> PreviewFiles;
+        public DbSet<ClientProfile> ClientProfiles { get; set; }
 
         public AppDBContext(DbContextOptions options) : base(options)
         {

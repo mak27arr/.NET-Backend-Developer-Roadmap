@@ -1,5 +1,6 @@
 ﻿using myCloudDAL.DAL.Entities.File;
 using myCloudDAL.DAL.Interface.Repo;
+using myCloudDAL.EF;
 
 namespace myCloudDAL.DAL.Repository.EF
 {

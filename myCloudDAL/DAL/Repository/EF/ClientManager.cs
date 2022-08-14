@@ -5,9 +5,9 @@ namespace myCloudDAL.DAL.Interface.Repo
 {
     internal class ClientManager : IClientManager
     {
-        private  IdentityAppContext _database;
+        private AppDBContext _database;
 
-        public ClientManager(IdentityAppContext db)
+        public ClientManager(AppDBContext db)
         {
             _database = db;
         }

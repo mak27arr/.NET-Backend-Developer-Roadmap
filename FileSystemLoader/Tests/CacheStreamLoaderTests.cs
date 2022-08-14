@@ -3,7 +3,7 @@ using Xunit;
 
 namespace FileSystemLoader.Tests
 {
-    internal class CacheStreamLoaderTests
+    public class CacheStreamLoaderTests
     {
         [Fact]
         public void ConstructorTest()

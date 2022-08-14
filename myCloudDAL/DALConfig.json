@@ -1,0 +1,4 @@
+{
+  "SQLite": "Data Source=Test.sqlite;",
+  "MySQL": ""
+}

@@ -1,35 +1,44 @@
 ﻿using DTO.Identity;
 using Identity.Infrastructure;
 using Identity.Interfaces;
-using Microsoft.AspNet.Identity;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using myCloudDAL.DAL.Entities.Identity;
 using myCloudDAL.DAL.Interface;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
 
 namespace Identity.Services
 {
-    internal class UserService : IUserService
+    public class UserService : IUserService
     {
         readonly IUnitOfWork _database;
+        private readonly IConfiguration _configuration;
 
-        public UserService(IUnitOfWork uow)
+        public UserService(IUnitOfWork uow, IConfiguration configuration)
         {
             _database = uow;
+            _configuration = configuration;
         }
 
         public async Task<OperationDetails> Create(UserDTO userDto)
         {
-            AppUser user = await _database.UserManager.FindByEmailAsync(userDto.Email);
+            var user = await _database.UserManager.FindByEmailAsync(userDto.Email);
+
             if (user == null)
             {
                 user = new AppUser { Email = userDto.Email, UserName = userDto.Email };
                 var result = await _database.UserManager.CreateAsync(user, userDto.Password);
 
                 if (result.Errors.Count() > 0)
-                    return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
-                
-                await _database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
-                ClientProfile clientProfile = new ClientProfile { Id = user.Id, Name = userDto.Name };
+                    return new OperationDetails(false, String.Join(" ", result.Errors), "");
+
+                if (string.IsNullOrEmpty(userDto.Role))
+                    userDto.Role = nameof(Roles.User);
+
+                await _database.UserManager.AddToRoleAsync(user, userDto.Role);
+                var clientProfile = new ClientProfile { Id = user.Id, Name = userDto.Name };
                 _database.ClientManager.Create(clientProfile);
                 await _database.SaveAsync();
                 return new OperationDetails(true, "Registered", "");
@@ -40,29 +49,47 @@ namespace Identity.Services
             }
         }
 
-        public async Task<ClaimsIdentity> Authenticate(UserDTO userDto)
+        public async Task<AuthResult> Authenticate(UserDTO userDto)
         {
-            AppUser user = await _database.UserManager.FindAsync(userDto.Email, userDto.Password);
-            
-            if (user != null)
-                return await _database.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-            
-            return null;
-        }
+            var user = await _database.UserManager.FindByEmailAsync(userDto.Email);
 
-        public async Task SetInitialData(UserDTO adminDto, List<string> roles)
-        {
-            foreach (string roleName in roles)
+            if (user != null && await _database.UserManager.CheckPasswordAsync(user, userDto.Password))
             {
-                var role = await _database.RoleManager.FindByNameAsync(roleName);
-                if (role == null)
-                {
-                    role = new AppRole { Name = roleName };
-                    await _database.RoleManager.CreateAsync(role);
-                }
+                var userRoles = await _database.UserManager.GetRolesAsync(user);
+                var authClaims = new List<Claim> {
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.MobilePhone, user.PhoneNumber),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                };
+
+                foreach (var userRole in userRoles)
+                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+
+                var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JsonWebTokenKeys:IssuerSigningKey"]));
+                var token = new JwtSecurityToken(expires: DateTime.Now.AddHours(3), claims: authClaims, signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256));
+                return new AuthResult(true, new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo, user, userRoles, "User Login Successfully");
             }
 
-            await Create(adminDto);
+            return new AuthResult(false, null, DateTime.MinValue, null, null, "Error");
+        }
+
+        public async Task SetInitialData(UserDTO adminDto)
+        {
+            foreach (var appRole in Enum.GetValues(typeof(Roles)))
+            {
+                var role = await _database.RoleManager.FindByNameAsync(appRole.ToString());
+
+                if (role != null)
+                    continue;
+
+                role = new AppRole { Name = appRole.ToString() };
+                await _database.RoleManager.CreateAsync(role);
+
+            }
+
+            if (adminDto != null)
+                await Create(adminDto);
         }
 
         public void Dispose() => _database.Dispose();
