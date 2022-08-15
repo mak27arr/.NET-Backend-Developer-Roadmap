@@ -36,7 +36,7 @@ namespace myCloudDAL.DAL.Repository.EF
             _dataDb = new AppDBContext(dbOption);
             FileRepository = new EFFileRepository(_dataDb);
             PreviewRepository = new EFPreviewRepository(_dataDb);
-            UserManager = new AppUserManager(new UserStore<AppUser>(_dataDb));
+            UserManager = new AppUserManager(new UserStore<AppUser, AppRole, AppDBContext, string>(_dataDb));
             RoleManager = new AppRoleManager(new RoleStore<AppRole>(_dataDb));
             ClientManager = new ClientManager(_dataDb);
         }

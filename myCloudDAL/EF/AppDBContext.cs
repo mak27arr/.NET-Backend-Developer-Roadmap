@@ -6,10 +6,11 @@ using myCloudDAL.EF.Config;
 
 namespace myCloudDAL.DAL
 {
-    internal class AppDBContext : IdentityDbContext<AppUser>
+    internal class AppDBContext : IdentityDbContext<AppUser, AppRole, string>
     {
-        internal DbSet<UserFile<Guid>> UserFiles;
-        internal DbSet<PreviewFile<Guid>> PreviewFiles;
+        internal DbSet<UserFile<Guid>> UserFiles { get; set; }
+        internal DbSet<PreviewFile<Guid>> PreviewFiles { get; set; }
+
         public DbSet<ClientProfile> ClientProfiles { get; set; }
 
         public AppDBContext(DbContextOptions options) : base(options)
