@@ -1,5 +1,6 @@
 ﻿using Identity.Helper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
 namespace API.Helper.Extention

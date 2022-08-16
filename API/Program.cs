@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.RegisterType();
 builder.Services.AuthConfig(new Identity.Helper.AuthConfig());
+builder.Services.AddAllMappers();
 
 var app = builder.Build();
 await SeedDB(app);

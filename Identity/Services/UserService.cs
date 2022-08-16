@@ -1,7 +1,8 @@
-﻿using DTO.Identity;
+﻿using AutoMapper;
+using DTO.Identity;
+using Identity.Helper;
 using Identity.Infrastructure;
 using Identity.Interfaces;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using myCloudDAL.DAL.Entities.Identity;
 using myCloudDAL.DAL.Interface;
@@ -14,12 +15,14 @@ namespace Identity.Services
     public class UserService : IUserService
     {
         readonly IUnitOfWork _database;
-        private readonly IConfiguration _configuration;
+        private readonly AuthConfig _authConf;
+        private readonly IMapper _mapper;
 
-        public UserService(IUnitOfWork uow, IConfiguration configuration)
+        public UserService(IUnitOfWork uow, AuthConfig configuration, IMapper mapper)
         {
             _database = uow;
-            _configuration = configuration;
+            _authConf = configuration;
+            _mapper = mapper;
         }
 
         public async Task<OperationDetails> Create(UserDTO userDto)
@@ -28,7 +31,7 @@ namespace Identity.Services
 
             if (user == null)
             {
-                user = new AppUser { Email = userDto.Email, UserName = userDto.Email };
+                user = _mapper.Map<AppUser>(userDto);
                 var result = await _database.UserManager.CreateAsync(user, userDto.Password);
 
                 if (result.Errors.Count() > 0)
@@ -51,14 +54,14 @@ namespace Identity.Services
 
         public async Task<AuthResult> Authenticate(UserDTO userDto)
         {
-            var user = await _database.UserManager.FindByEmailAsync(userDto.Email);
+            ;
+            var user = !string.IsNullOrEmpty(userDto.UserName) ? await _database.UserManager.FindByNameAsync(userDto.UserName) : await _database.UserManager.FindByEmailAsync(userDto.Email);
 
             if (user != null && await _database.UserManager.CheckPasswordAsync(user, userDto.Password))
             {
                 var userRoles = await _database.UserManager.GetRolesAsync(user);
                 var authClaims = new List<Claim> {
                     new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(ClaimTypes.MobilePhone, user.PhoneNumber),
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 };
@@ -66,8 +69,7 @@ namespace Identity.Services
                 foreach (var userRole in userRoles)
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
 
-                var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JsonWebTokenKeys:IssuerSigningKey"]));
-                var token = new JwtSecurityToken(expires: DateTime.Now.AddHours(3), claims: authClaims, signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256));
+                var token = new JwtSecurityToken(expires: DateTime.Now.AddHours(24), claims: authClaims, signingCredentials: new SigningCredentials(_authConf.IssuerSigningKey, SecurityAlgorithms.HmacSha256));
                 return new AuthResult(true, new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo, user, userRoles, "User Login Successfully");
             }
 

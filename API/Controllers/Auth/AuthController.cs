@@ -4,7 +4,6 @@ using AutoMapper;
 using DTO.Identity;
 using Identity.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Owin.Security;
 
 
 namespace API.Controllers.Auth
@@ -14,7 +13,7 @@ namespace API.Controllers.Auth
     public class AuthController : Controller
     {
         private readonly IUserService _userService;
-        private readonly Mapper _mapper;
+        private readonly IMapper _mapper;
 
         public AuthController(IUserService userService)
         {

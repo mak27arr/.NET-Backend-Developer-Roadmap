@@ -215,3 +215,6 @@ project.lock.json
 *.feature.cs
 *.feature.xlsx.*
 *.Specs_*.html
+/API/Test.sqlite
+/API/Test.sqlite-shm
+/API/Test.sqlite-wal
