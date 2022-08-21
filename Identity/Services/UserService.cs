@@ -70,6 +70,7 @@ namespace Identity.Services
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
 
                 var token = new JwtSecurityToken(expires: DateTime.Now.AddHours(24), claims: authClaims, signingCredentials: new SigningCredentials(_authConf.IssuerSigningKey, SecurityAlgorithms.HmacSha256));
+            
                 return new AuthResult(true, new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo, user, userRoles, "User Login Successfully");
             }
 

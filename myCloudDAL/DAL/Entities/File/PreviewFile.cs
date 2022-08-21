@@ -4,6 +4,6 @@
     {
         public UserFile<T> File { get; set; }
 
-        public UserFile<T> FileId { get; set; }
+        public T FileId { get; set; }
     }
 }

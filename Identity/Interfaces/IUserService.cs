@@ -1,6 +1,5 @@
 ﻿using DTO.Identity;
 using Identity.Infrastructure;
-using System.Security.Claims;
 
 namespace Identity.Interfaces
 {
