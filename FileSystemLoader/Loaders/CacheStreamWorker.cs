@@ -2,7 +2,7 @@
 
 namespace FileSystemLoader.Loaders
 {
-    internal class CacheStreamWorker : IStreamWorker
+    public class CacheStreamWorker : IStreamWorker
     {
         private readonly IStreamWorker _streamLoader;
         private Dictionary<string, Tuple<DateTime, MemoryStream>> _cache = new Dictionary<string, Tuple<DateTime, MemoryStream>>();
@@ -51,6 +51,14 @@ namespace FileSystemLoader.Loaders
                     _cache.Remove(item.Key);
                 }
             }
+        }
+
+        public void DeleteFile(string filePath)
+        {
+            if (_cache.ContainsKey(filePath))
+                _cache.Remove(filePath);
+
+            _streamLoader.DeleteFile(filePath);
         }
 
         public void Dispose()

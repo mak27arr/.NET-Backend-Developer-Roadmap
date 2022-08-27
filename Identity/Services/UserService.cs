@@ -8,7 +8,6 @@ using myCloudDAL.DAL.Entities.Identity;
 using myCloudDAL.DAL.Interface;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 
 namespace Identity.Services
 {
@@ -54,15 +53,18 @@ namespace Identity.Services
 
         public async Task<AuthResult> Authenticate(UserDTO userDto)
         {
-            ;
             var user = !string.IsNullOrEmpty(userDto.UserName) ? await _database.UserManager.FindByNameAsync(userDto.UserName) : await _database.UserManager.FindByEmailAsync(userDto.Email);
 
-            if (user != null && await _database.UserManager.CheckPasswordAsync(user, userDto.Password))
+            if (user != null)
             {
+                if (!await _database.UserManager.CheckPasswordAsync(user, userDto.Password))
+                    return new AuthResult(false, null, DateTime.MinValue, null, null, "Error: password incorect");
+
                 var userRoles = await _database.UserManager.GetRolesAsync(user);
                 var authClaims = new List<Claim> {
                     new Claim(ClaimTypes.Name, user.UserName),
                     new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 };
 
@@ -74,7 +76,20 @@ namespace Identity.Services
                 return new AuthResult(true, new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo, user, userRoles, "User Login Successfully");
             }
 
-            return new AuthResult(false, null, DateTime.MinValue, null, null, "Error");
+            return new AuthResult(false, null, DateTime.MinValue, null, null, "Error: user not found");
+        }
+
+        public async Task<Guid> GetUserId(string userName)
+        {
+            if (string.IsNullOrEmpty(userName))
+                return Guid.Empty;
+
+            var user = await _database.UserManager.FindByNameAsync(userName);
+
+            if (user != null)
+                return new Guid(user.Id);
+
+            return Guid.Empty;
         }
 
         public async Task SetInitialData(UserDTO adminDto)

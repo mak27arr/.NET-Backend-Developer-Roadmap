@@ -1,6 +1,8 @@
 ﻿using DAL.Helper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using myCloudDAL.DAL.Entities.Identity;
 using myCloudDAL.DAL.Identity;
 using myCloudDAL.DAL.Interface;
@@ -20,7 +22,7 @@ namespace myCloudDAL.DAL.Repository.EF
         public IPreviewRepository PreviewRepository { get; }
         #endregion
 
-        public UnitOfWork(DBConfig config)
+        public UnitOfWork(DBConfig config, ILogger<UserManager<AppUser>> logger)
         {
             #if DEBUG
             var dbOption = new DbContextOptionsBuilder()
@@ -33,10 +35,11 @@ namespace myCloudDAL.DAL.Repository.EF
                             .Options;
             #endif
 
+            ///DI !!!!!!!!!!!!!
             _dataDb = new AppDBContext(dbOption);
             FileRepository = new EFFileRepository(_dataDb);
             PreviewRepository = new EFPreviewRepository(_dataDb);
-            UserManager = new AppUserManager(new UserStore<AppUser, AppRole, AppDBContext, string>(_dataDb));
+            UserManager = new AppUserManager(new UserStore<AppUser, AppRole, AppDBContext, string>(_dataDb), logger);
             RoleManager = new AppRoleManager(new RoleStore<AppRole>(_dataDb));
             ClientManager = new ClientManager(_dataDb);
         }

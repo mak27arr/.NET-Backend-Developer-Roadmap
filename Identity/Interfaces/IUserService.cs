@@ -7,6 +7,7 @@ namespace Identity.Interfaces
     {
         Task<OperationDetails> Create(UserDTO userDto);
         Task<AuthResult> Authenticate(UserDTO userDto);
+        Task<Guid> GetUserId(string userName);
         Task SetInitialData(UserDTO adminDto);
     }
 }

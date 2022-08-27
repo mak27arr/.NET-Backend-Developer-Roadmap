@@ -2,14 +2,16 @@
 
 namespace FileSystemLoader.Interface
 {
-    internal interface IFileService
+    public interface IFileService
     {
-        List<PreviewFileDTO> GetPreviewFiles();
-        MemoryStream GetPreviewFile(Guid id);
-        List<UserFileDTO> GetFiles();
-        MemoryStream GetFile(Guid id);
-        List<PreviewFileDTO> FindPreviewFiles(Predicate<PreviewFileDTO> filter);
-        Guid CreateFile(UserFileDTO fileInfo, MemoryStream file, bool createPreview);
-        bool DeleteFile(Guid id);
+        Task<IQueryable<UserFileDTO>> GetFilesInfo(Guid userID);
+        Task<UserFileDTO> GetFileInfo(Guid userID, Guid id);
+        Task<bool> UpdateFileInfo(Guid userID, UserFileDTO fileDto);
+        Task<IQueryable<PreviewFileDTO>> GetPreviewFiles(Guid userID);
+        Task<MemoryStream> GetPreviewFile(Guid userID, Guid id);
+        Task<MemoryStream> GetFile(Guid userID, Guid id);
+        Task<IQueryable<PreviewFileDTO>> FindPreviewFiles(Guid userID, Predicate<PreviewFileDTO> filter);
+        Task<Guid> CreateFileAsync(Guid userID, UserFileDTO fileInfo, MemoryStream file, bool createPreview);
+        Task<bool> DeleteFile(Guid userID, Guid id);
     }
 }

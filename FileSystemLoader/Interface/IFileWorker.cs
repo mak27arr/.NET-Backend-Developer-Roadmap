@@ -1,6 +1,6 @@
 ﻿namespace FileSystemLoader.Interface
 {
-    internal interface IFileWorker<T>
+    public interface IFileWorker<T>
     {
         Task<T> LoadFile(string path);
 

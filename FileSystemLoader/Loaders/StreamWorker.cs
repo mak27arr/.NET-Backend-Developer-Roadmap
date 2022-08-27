@@ -3,7 +3,7 @@ using FileSystemLoader.Interface;
 
 namespace FileSystemLoader.Loaders
 {
-    internal class StreamWorker : IStreamWorker
+    public class StreamWorker : IStreamWorker
     {
         public Task<MemoryStream> LoadFile(string path)
         {
@@ -51,6 +51,12 @@ namespace FileSystemLoader.Loaders
             {
                 return false;
             }
+        }
+
+        public void DeleteFile(string filePath)
+        {
+            if (File.Exists(filePath))
+                File.Delete(filePath);
         }
 
         public void Dispose()

@@ -28,14 +28,14 @@ namespace myCloudDAL.DAL.Repository.EF
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async virtual Task<IList<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        public virtual Task<IQueryable<T>> FindAsync(Expression<Func<T, bool>> predicate)
         {
-            return await _dbSet.Where(predicate).AsNoTracking().ToListAsync();
+            return Task.FromResult(_dbSet.Where(predicate).AsNoTracking());
         }
 
-        public async virtual Task<IEnumerable<T>> GetAsync()
+        public virtual Task<IQueryable<T>> GetAsync()
         {
-            return await _dbSet.AsNoTracking().ToListAsync();
+            return Task.FromResult(_dbSet.AsNoTracking());
         }
 
         public abstract Task<T> GetAsync(Y id);

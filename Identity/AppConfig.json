@@ -2,9 +2,9 @@
   "JsonWebTokenKeys": {
     "ValidateIssuerSigningKey": true,
     "IssuerSigningKey": "64A63153-11C1-4919-9133-EFAF99A9B456",
-    "ValidateIssuer": true,
+    "ValidateIssuer": false,
     "ValidIssuer": "https://localhost:7212",
-    "ValidateAudience": true,
+    "ValidateAudience": false,
     "ValidAudience": "https://localhost:7212",
     "RequireExpirationTime": true,
     "ValidateLifetime": true

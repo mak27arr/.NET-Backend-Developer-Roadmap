@@ -4,7 +4,7 @@
     {
         public Guid Owner { get; set; }
         public string Title { get; set; }
-        public DateTime Created { get; set; }
+        public DateTimeOffset Created { get; set; }
         public string Description { get; set; }
         public PreviewFile<T> PreviewFile { get; set; }
         public T PreviewFileId { get; set; }
