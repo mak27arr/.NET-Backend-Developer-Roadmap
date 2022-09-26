@@ -4,5 +4,7 @@
     {
         public T Id { get; set; }
         public string FilePath { get; set; }
+
+        public string FileExtension { get; set; }
     }
 }

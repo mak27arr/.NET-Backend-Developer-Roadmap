@@ -93,19 +93,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProducerConsumer", "Produce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PP", "PP\PP.csproj", "{21781E17-29AF-4843-B3E4-1AF6A8CE71FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter", "Adapter\Adapter.csproj", "{40842A16-B1B8-4584-A7D8-71149440A9C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adapter", "Adapter\Adapter.csproj", "{40842A16-B1B8-4584-A7D8-71149440A9C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fasade", "Fasade\Fasade.csproj", "{C799125E-7B07-4911-BD37-B5E1AF6C44E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fasade", "Fasade\Fasade.csproj", "{C799125E-7B07-4911-BD37-B5E1AF6C44E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composite", "Composite\Composite.csproj", "{A25000F7-6EA2-4191-96A2-EA5B8AD7DF18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Composite", "Composite\Composite.csproj", "{A25000F7-6EA2-4191-96A2-EA5B8AD7DF18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorP", "DecoratorP\DecoratorP.csproj", "{50E45A73-D7B2-4226-8E51-16A6AF010653}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecoratorP", "DecoratorP\DecoratorP.csproj", "{50E45A73-D7B2-4226-8E51-16A6AF010653}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flyweight", "Flyweight\Flyweight.csproj", "{ED804CC0-D273-40DB-906D-87469DDEBADF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flyweight", "Flyweight\Flyweight.csproj", "{ED804CC0-D273-40DB-906D-87469DDEBADF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryMethod", "FactoryMethod\FactoryMethod.csproj", "{0344B956-7699-4971-812D-D3D5A9EE21E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryMethod", "FactoryMethod\FactoryMethod.csproj", "{0344B956-7699-4971-812D-D3D5A9EE21E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactory", "AbstractFactory\AbstractFactory.csproj", "{DE68F3D4-9183-4F2C-BD0F-044D4F536534}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractFactory", "AbstractFactory\AbstractFactory.csproj", "{DE68F3D4-9183-4F2C-BD0F-044D4F536534}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings", "Settings\Settings.csproj", "{C2006B5C-8D5F-4097-96E9-F426438EE743}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -237,6 +239,10 @@ Global
 		{DE68F3D4-9183-4F2C-BD0F-044D4F536534}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE68F3D4-9183-4F2C-BD0F-044D4F536534}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE68F3D4-9183-4F2C-BD0F-044D4F536534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2006B5C-8D5F-4097-96E9-F426438EE743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2006B5C-8D5F-4097-96E9-F426438EE743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2006B5C-8D5F-4097-96E9-F426438EE743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2006B5C-8D5F-4097-96E9-F426438EE743}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -285,6 +291,7 @@ Global
 		{ED804CC0-D273-40DB-906D-87469DDEBADF} = {A28F1F2D-FDC9-4CD5-BC71-94AC2887E473}
 		{0344B956-7699-4971-812D-D3D5A9EE21E7} = {A28F1F2D-FDC9-4CD5-BC71-94AC2887E473}
 		{DE68F3D4-9183-4F2C-BD0F-044D4F536534} = {A28F1F2D-FDC9-4CD5-BC71-94AC2887E473}
+		{C2006B5C-8D5F-4097-96E9-F426438EE743} = {7E1EF949-84C0-4522-B372-ADA576581761}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5A50617A-A55A-454E-9437-30A26BFCF92B}

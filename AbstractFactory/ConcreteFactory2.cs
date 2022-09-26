@@ -1,4 +1,6 @@
-﻿namespace AbstractFactory
+﻿using AbstractFactory.ProductB;
+
+namespace AbstractFactory
 {
     class ConcreteFactory2 : IAbstractFactory
     {

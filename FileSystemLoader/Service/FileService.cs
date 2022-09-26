@@ -36,7 +36,7 @@ namespace FileSystemLoader.Service
             fileInfo.Owner = userID;
             fileInfo.Created = DateTimeOffset.Now;
             fileInfo.FilePath = _pathGenerator.GeneratePath(fileInfo);
-            await _streamWorker.SaveFile(fileInfo.FilePath, file);
+            await _streamWorker.WriteFile(file, fileInfo.FilePath);
             await _unityOfWork.FileRepository.CreateAsync(fileInfo);
             var filePreview = _prGenerator.Generate(fileInfo);
             await _unityOfWork.PreviewRepository.CreateAsync(filePreview);

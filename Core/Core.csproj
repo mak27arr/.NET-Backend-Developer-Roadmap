@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FileSystemLoader\FileSystemLoader.csproj" />
     <ProjectReference Include="..\Identity\Identity.csproj" />
+    <ProjectReference Include="..\Settings\Settings.csproj" />
   </ItemGroup>
 
   <ItemGroup>

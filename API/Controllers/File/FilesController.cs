@@ -17,7 +17,8 @@ namespace API.Controllers.File
     {
         private readonly IFileService _fileService;
         private readonly IMapper _mapper;
-
+        public delegate void TestDelegate(int t, double tt);
+        public event TestDelegate myEvents;
         public FilesController(IFileService fileService, IUserService userService) : base(userService, MapConfig.FileConfig())
         {
             this._fileService = fileService;
@@ -54,7 +55,7 @@ namespace API.Controllers.File
                 var fileStream = new MemoryStream();
                 await file.CopyToAsync(fileStream);
                 var fileDto = _mapper.Map<UserFileDTO>(file);
-                return _fileService.CreateFileAsync(userId, fileDto, fileStream, true);
+                return await _fileService.CreateFileAsync(userId, fileDto, fileStream, true);
             });
         }
 

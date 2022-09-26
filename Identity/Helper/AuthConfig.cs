@@ -21,7 +21,7 @@ namespace Identity.Helper
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("AppConfig.json", optional: true, reloadOnChange: true);
+                .AddJsonFile("AuthConfig.json", optional: true, reloadOnChange: true);
 
             _configuration = builder.Build();
         }

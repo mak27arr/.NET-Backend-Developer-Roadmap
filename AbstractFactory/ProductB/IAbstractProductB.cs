@@ -1,6 +1,6 @@
 ﻿namespace AbstractFactory
 {
-    internal interface IAbstractProductB
+    public interface IAbstractProductB
     {
         string UsefulFunctionB();
 
