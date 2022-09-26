@@ -29,7 +29,8 @@ namespace Core.Helper
             builder.AddScoped<UserManagerLogger>();
             builder.AddScoped<IPathGenerator, PathGenerator>();
             builder.AddScoped<IPreviewGenerator, PreviewGenerator>();
-            builder.AddScoped<IFileService>(p => new FileService(p.GetService<IStreamWorker>(), p.GetService<IUnitOfWork>(), FileMapper.FileConfig(), p.GetService<IPathGenerator>(), p.GetService<IPreviewGenerator>()));
+            builder.AddSingleton<FileMapper>();
+            builder.AddScoped<IFileService, FileService>();
             builder.AddTransient<IStreamWorker, StreamWorker>();
             builder.Decorate<IStreamWorker, CacheStreamWorker>();
         }

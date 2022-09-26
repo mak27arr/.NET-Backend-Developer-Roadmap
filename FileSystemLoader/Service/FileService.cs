@@ -5,6 +5,7 @@ using AutoMapper.QueryableExtensions;
 using AutoMapper;
 using myCloudDAL.DAL.Entities.File;
 using System.Linq.Expressions;
+using FileSystemLoader.MapperConfig;
 
 namespace FileSystemLoader.Service
 {
@@ -17,11 +18,11 @@ namespace FileSystemLoader.Service
         private readonly IPathGenerator _pathGenerator;
         private readonly IPreviewGenerator _prGenerator;
 
-        public FileService(IStreamWorker streamWorker, IUnitOfWork unityOfWork, IConfigurationProvider mapperConfig, IPathGenerator pathGenerator, IPreviewGenerator prGenerator)
+        public FileService(IStreamWorker streamWorker, IUnitOfWork unityOfWork, FileMapper fileMapper, IPathGenerator pathGenerator, IPreviewGenerator prGenerator)
         {
             _streamWorker = streamWorker;
             _unityOfWork = unityOfWork;
-            _mapperConfig = mapperConfig;
+            _mapperConfig = fileMapper.FileConfig();
             _pathGenerator = pathGenerator;
             _prGenerator = prGenerator;
             _mapper = new Mapper(_mapperConfig);
